@@ -37,16 +37,17 @@ namespace DataLayer
 
             return vets;
         }
-        public int InsertVet(Vet v)
+        public int InsertVet(Vet x)
         {
             using (SqlConnection sqlConnection = new SqlConnection(Constants.connectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand();
-                sqlCommand.Connection = sqlConnection;
                 sqlCommand.CommandText =
-                    string.Format("INSERT INTO Vets VALUES('{0}', '{1}'. {2})", v.FullName, v.Speciality, v.YearsExperience);
+                    string.Format("INSERT INTO Vets VALUES('{0}', '{1}'. {2})", x.FullName, x.Speciality, x.YearsExperience);
+                sqlCommand.Connection = sqlConnection;
 
                 sqlConnection.Open();
+
                 return sqlCommand.ExecuteNonQuery();
             }
         }
