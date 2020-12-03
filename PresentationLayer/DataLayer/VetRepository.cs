@@ -41,10 +41,11 @@ namespace DataLayer
         {
             using (SqlConnection sqlConnection = new SqlConnection(Constants.connectionString))
             {
+
                 SqlCommand sqlCommand = new SqlCommand();
-                sqlCommand.CommandText =
-                    string.Format("INSERT INTO Vets VALUES('{0}', '{1}'. {2})", x.FullName, x.Speciality, x.YearsExperience);
                 sqlCommand.Connection = sqlConnection;
+                sqlCommand.CommandText =
+                    string.Format("INSERT INTO Vets VALUES('{0}', '{1}', {2})", x.FullName, x.Speciality, x.YearsExperience);
 
                 sqlConnection.Open();
 
